@@ -11,16 +11,31 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 Auth::routes();
 
-Route::get('/home', function () {
-    return redirect ()-> route ('home.index');
+Route::get ('/home', function () {
+  return redirect ()-> route ('home.index');
 });
 
-Route::get('/', 'HomeController@index')->name('home.index');
+Route::get (
+  '/', 
+  'HomeController@index'
+  )->name('home.index');
 
-Route::get('/contact', 'HomeController@contact')->name ('home.contact');
+Route::get (
+  '/contact', 
+  'HomeController@contact'
+  )->name ('home.contact');
+
+
+// --- Admin ---
+Route::name ('admin.')
+  ->middleware ('auth')
+  ->namespace ('Admin')
+  ->prefix ('adminz')
+  ->group (
+
+    function () {
+      Route::get ('/', 'IndexController@index')-> name ('index');
+    }
+  );

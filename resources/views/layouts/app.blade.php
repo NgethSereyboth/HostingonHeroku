@@ -159,6 +159,13 @@
                       </button>
                     
                     </form>
+
+                    <a 
+                      class="dropdown-item"
+                      href="{{ route ('admin.index') }}"
+                    >
+                      Admin site
+                    </a>
                   
                   </div>
 
