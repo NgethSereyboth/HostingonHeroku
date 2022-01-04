@@ -47,7 +47,16 @@
           <i class="fas fa-bars"></i>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarResponsive">
+        <div 
+          class="
+            collapse 
+            navbar-collapse 
+            d-flex 
+            justify-content-between 
+            align-items-center
+          " 
+          id="navbarResponsive"
+        >
 
           <ul class="navbar-nav ms-auto py-4 py-lg-0">
 
@@ -104,8 +113,60 @@
               </a>
 
             </li>
-          
+
           </ul>
+
+          @if (auth ()-> check())
+
+              <div 
+                class="
+                  d-flex
+                  justify-content-center
+                  align-items-center
+                "
+              >
+                
+                <div class="dropdown">
+
+                  <button 
+                    class="btn btn-secondary dropdown-toggle" type="button" 
+                    id="dropdownMenuButton" 
+                    data-toggle="dropdown" 
+                    aria-haspopup="true" 
+                    aria-expanded="false"
+                  >
+                    {{ auth ()->user ()->name }}
+                  </button>
+
+                  <div 
+                    class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    
+                    <form 
+                      class="dropdown-item"
+                      method="POST"
+                      action="{{ route('logout') }}"
+                    >
+                      @csrf
+                      
+                      <button 
+                        type="submit"
+                        style="
+                          background: transparent;
+                          border: none; 
+                        "
+                      >
+                        Logout
+                      </button>
+                    
+                    </form>
+                  
+                  </div>
+
+                </div>
+
+              </div>
+
+          @endif
 
         </div>
 
