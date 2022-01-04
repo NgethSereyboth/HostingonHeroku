@@ -20,7 +20,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-  
+
   <div id="app">
 
     <!-- Navigation-->
@@ -28,7 +28,12 @@
 
       <div class="container px-4 px-lg-5">
 
-        <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+        <a 
+          class="navbar-brand" 
+          href={{ route('home.index') }}
+        >
+          Start Bootstrap
+        </a>
 
         <button 
           class="navbar-toggler" 
@@ -70,7 +75,8 @@
               class="nav-item"
             >
               <a 
-                class="nav-link px-lg-3 py-3 py-lg-4" href="#donate"
+                class="nav-link px-lg-3 py-3 py-lg-4" 
+                href="#donate"
               >
                 Donate
               </a>
@@ -91,7 +97,8 @@
               class="nav-item"
             >
               <a 
-                class="nav-link px-lg-3 py-3 py-lg-4" href="#contact"
+                class="nav-link px-lg-3 py-3 py-lg-4" 
+                href={{ route('home.contact') }}
               >
                 Contact
               </a>
