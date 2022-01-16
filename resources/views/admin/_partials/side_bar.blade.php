@@ -14,7 +14,10 @@
         <ul class="collapse list-unstyled" id="homeSubmenu">
             
             <li>
-              <a href="#">News</a>
+              <a href="{{ route ('admin.articles.index') }}"
+              >
+                Articles
+              </a>
             </li>
             <li>
               <a href="#">Stock</a>

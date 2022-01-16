@@ -39,7 +39,7 @@ Route::name ('admin.')
       
       Route::get ('/', 'IndexController@index')-> name ('index');
       
-      Route::resource ('/news', 'NewsController@index');
+      Route::resource ('/articles', 'ArticlesController');
       
     }
   );

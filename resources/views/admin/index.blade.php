@@ -17,7 +17,7 @@
   {{-- side bar --}}
   @include('admin._partials.side_bar')
 
-  <div id="content">
+  <div id="content" style="width: 100%">
     
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       
@@ -31,6 +31,8 @@
       </div>
     
     </nav>
+
+    @yield('admin.content')
   
   </div>
 
