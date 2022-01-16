@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -37261,51 +37261,18 @@ module.exports = function(module) {
 
 /***/ }),
 
-/***/ "./resources/js/app.js":
-/*!*****************************!*\
-  !*** ./resources/js/app.js ***!
-  \*****************************/
+/***/ "./resources/js/admin.js":
+/*!*******************************!*\
+  !*** ./resources/js/admin.js ***!
+  \*******************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
-/*!
-* Start Bootstrap - Clean Blog v6.0.7 (https://startbootstrap.com/theme/clean-blog)
-* Copyright 2013-2021 Start Bootstrap
-* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-clean-blog/blob/master/LICENSE)
-*/
 
-
-window.addEventListener('DOMContentLoaded', function () {
-  var scrollPos = 0;
-  var mainNav = document.getElementById('mainNav');
-  var headerHeight = mainNav.clientHeight;
-  window.addEventListener('scroll', function () {
-    var currentTop = document.body.getBoundingClientRect().top * -1;
-
-    if (currentTop < scrollPos) {
-      // Scrolling Up
-      if (currentTop > 0 && mainNav.classList.contains('is-fixed')) {
-        mainNav.classList.add('is-visible');
-      } else {
-        console.log(123);
-        mainNav.classList.remove('is-visible', 'is-fixed');
-      }
-    } else {
-      // Scrolling Down
-      mainNav.classList.remove(['is-visible']);
-
-      if (currentTop > headerHeight && !mainNav.classList.contains('is-fixed')) {
-        mainNav.classList.add('is-fixed');
-      }
-    }
-
-    scrollPos = currentTop;
+$(document).ready(function () {
+  $('#sidebarCollapse').on('click', function () {
+    $('#sidebar').toggleClass('active');
   });
 });
 
@@ -37356,38 +37323,14 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
-/***/ "./resources/sass/admin.scss":
-/*!***********************************!*\
-  !*** ./resources/sass/admin.scss ***!
-  \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ "./resources/sass/app.scss":
-/*!*********************************!*\
-  !*** ./resources/sass/app.scss ***!
-  \*********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ 0:
-/*!*****************************************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/sass/app.scss ./resources/sass/admin.scss ***!
-  \*****************************************************************************************/
+/***/ 1:
+/*!*************************************!*\
+  !*** multi ./resources/js/admin.js ***!
+  \*************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/sambosovan/Developments/bot-laravel/resources/js/app.js */"./resources/js/app.js");
-__webpack_require__(/*! /home/sambosovan/Developments/bot-laravel/resources/sass/app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! /home/sambosovan/Developments/bot-laravel/resources/sass/admin.scss */"./resources/sass/admin.scss");
+module.exports = __webpack_require__(/*! /home/sambosovan/Developments/bot-laravel/resources/js/admin.js */"./resources/js/admin.js");
 
 
 /***/ })

@@ -1,5 +1,15 @@
 @extends('layouts.app')
 
+@section('styles_scripts')
+
+  <!-- Scripts -->
+  <script src="{{ asset('js/app.js') }}" defer></script>
+    
+  <!-- Styles -->
+  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+@endsection
+
 @section('content')
   
   <!-- Main Content-->
