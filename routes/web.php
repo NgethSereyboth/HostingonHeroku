@@ -36,6 +36,10 @@ Route::name ('admin.')
   ->group (
 
     function () {
+      
       Route::get ('/', 'IndexController@index')-> name ('index');
+      
+      Route::resource ('/news', 'NewsController@index');
+      
     }
   );
