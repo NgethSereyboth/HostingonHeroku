@@ -47,12 +47,14 @@
           Close
         </button>
         
-        <button 
-          type="button" 
-          class="btn btn-primary"
-        >
-          {{ $saveButtonName }}
-        </button>
+        @if ($needSavedButton == "true")
+          <button 
+            type="button" 
+            class="btn btn-primary"
+          >
+            {{ $saveButtonName }}
+          </button>    
+        @endif
       
       </div>
 

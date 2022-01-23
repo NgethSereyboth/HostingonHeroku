@@ -23,13 +23,38 @@ class ArticleRequest extends FormRequest
    */
   public function rules()
   {
+
+    return $this->get('id') ? $this->updateRules() : 
+    $this->storeRules();
+
+  }
+
+  public function storeRules () {
+
     return [
+
       'title'     =>  'required|min:10|max:100',
       'content'   =>  'required|min:10|max:400',
+
       'image'     =>  'required|'
-                        .'mimetypes:text/plain,'
-                        .'image/png,'
-                        .'image/jpeg,'
+                      .'mimetypes:text/plain,'
+                      .'image/png,'
+                      .'image/jpeg,'
+                      
+    ];
+  }
+
+  public function updateRules () {
+
+    return [
+      
+      'title'     =>  'required|min:10|max:100',
+      'content'   =>  'required|min:10|max:400',
+
+      'image'     =>  'mimetypes:text/plain,'
+                      .'image/png,'
+                      .'image/jpeg,'
+                      
     ];
   }
 }

@@ -39521,12 +39521,14 @@ var _default = /*#__PURE__*/function (_Controller) {
 
       var articleTitle = articleRow.querySelector('.admin-article-title');
       var articleContent = articleRow.querySelector('.admin-article-content');
+      var articleImage = articleRow.querySelector('.admin-article-image');
       var modelPopUpTitle = document.querySelector('#pop-up-modal-title');
       var modelPopUpContent = document.querySelector('#pop-up-modal-content');
 
       switch (true) {
         case !articleTitle:
         case !articleContent:
+        case !articleImage:
         case !modelPopUpTitle:
         case !modelPopUpContent:
           return;
@@ -39536,7 +39538,11 @@ var _default = /*#__PURE__*/function (_Controller) {
       }
 
       modelPopUpTitle.innerHTML = articleTitle.getAttribute('data-title');
+      var div = document.createElement('img');
+      div.src = articleImage.getAttribute('data-image');
+      div.classList.add("img-fluid");
       modelPopUpContent.innerHTML = articleContent.getAttribute('data-content');
+      modelPopUpContent.append(div);
     });
 
     return _this;

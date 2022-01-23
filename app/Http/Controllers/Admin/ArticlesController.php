@@ -6,7 +6,7 @@ use App\Models\Article;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\ArticleRequest;
-
+use Illuminate\Contracts\Cache\Store;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Storage;
@@ -48,7 +48,7 @@ class ArticlesController extends Controller
 
     if ($request->hasFile('image')) {
       $file = $request->file('image');
-      $filename = 'files/' . $file->getClientOriginalName();
+      $filename = 'articles/' . $file->getClientOriginalName();
       Storage::disk('public')->put($filename, File::get($file));
     }
 
@@ -77,9 +77,9 @@ class ArticlesController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function edit($id)
+  public function edit(Article $article)
   {
-      //
+    return view('admin.articles.edit', compact('article'));
   }
 
   /**
@@ -89,9 +89,31 @@ class ArticlesController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function update(Request $request, $id)
+  public function update(
+    Article $article,
+    ArticleRequest $request 
+  )
   {
-      //
+
+    if ($request->hasFile('image')) {
+
+      $file = $request->file('image');
+      $filename = 'articles/' . $file->getClientOriginalName();
+
+      Storage::disk('public')->delete('articles/'.$article->image);
+
+      Storage::disk('public')->put($filename, File::get($file));
+
+      $article->image = $filename;
+    
+    }
+
+    $article->title = $request->get('title');
+    $article->content = $request->get('content');
+    
+    $article->save ();
+
+    return redirect()->route('admin.articles.index');
   }
 
   /**

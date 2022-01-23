@@ -1,5 +1,9 @@
 <div class="ml-5 mr-5 mt-5">
 
+  @isset($article)
+    {!! Form::hidden('id', $article->id) !!}
+  @endisset
+
   @if (count($errors) > 0)
     <div class="alert alert-danger">
       <strong>Whoops!</strong> There were some problems with your input.<br><br>
@@ -11,32 +15,12 @@
     </div>
   @endif
 
-  <div class="form-group">
-
-    <label for="title">Title</label>
-    
-    <input 
-      type="text" 
-      class="form-control" 
-      id="title"
-      name="title" 
-      placeholder="Title for the article"
-    >
-    
+  <div>
+    {!! Form::text('title', 'title') !!}
   </div>
 
-  <div class="form-group">
-
-    <label for="content">Content</label>
-    
-    <input 
-      type="text" 
-      class="form-control" 
-      id="content"
-      name="content" 
-      placeholder="Content for the article"
-    >
-    
+  <div>
+    {!! Form::text('content', 'content') !!}
   </div>
 
   <div class="form-group">
@@ -48,6 +32,15 @@
       name="image"
       accept="image/png, image/gif, image/jpeg"
     >
+
+    @isset($article)
+      <img 
+        class="img-fluid mt-5"
+        src="{{ asset('storage/'.$article->image) }}" 
+        alt="{{ $article->title }}"
+      >
+    @endisset
+
   </div>
 
   <div class="d-flex align-items-center justify-content-end">

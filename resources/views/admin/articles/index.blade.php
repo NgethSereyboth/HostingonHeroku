@@ -16,7 +16,7 @@
       
       @include(
         'layouts._partials.pop_up_modal',
-        [ 'saveButtonName' => 'Confirm' ] 
+        [ 'needSavedButton' => 'false' ] 
       )
 
       @foreach ($articles as $article)
@@ -39,7 +39,10 @@
             {{ Str::limit($article->content, 20) }}
           </td>
           
-          <td>
+          <td
+            class="admin-article-image"
+            data-image="{{ asset('storage/'.$article->image) }}"
+          >
             <div
               class="image-preview-listing"
               style="
@@ -58,8 +61,16 @@
             >
               Show
             </div>
-            <div class="btn btn-primary">Edit</div>
+            
+            <a 
+              href="{{ route('admin.articles.edit', $article->id) }}" 
+              class="btn btn-primary"
+            >
+              Edit
+            </a>
+            
             <div class="btn btn-danger">Delete</div>
+          
           </td>
         </tr>
 
