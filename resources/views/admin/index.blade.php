@@ -28,6 +28,16 @@
             <span>Open Menu</span>
         </button>
 
+        <a 
+          id="create-article" 
+          type="button" 
+          class="btn btn-info" 
+          href="{{ route('admin.articles.create') }}"
+        >
+          <i class="fas fa-align-left"></i>
+          <span>Create</span>
+        </a>
+
       </div>
     
     </nav>
