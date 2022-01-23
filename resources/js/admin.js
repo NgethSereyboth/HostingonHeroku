@@ -1,3 +1,5 @@
+import { Application } from "stimulus"
+import { definitionsFromContext } from "stimulus/webpack-helpers"
 require('./bootstrap');
 
 $(document).ready(function () {
@@ -7,3 +9,7 @@ $(document).ready(function () {
   });
 
 });
+
+const application = Application.start()
+const context = require.context("./controllers/admin", true, /\.js$/)
+application.load(definitionsFromContext(context))
