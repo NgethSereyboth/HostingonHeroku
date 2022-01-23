@@ -39512,8 +39512,31 @@ var _default = /*#__PURE__*/function (_Controller) {
     _this = _super.call.apply(_super, [this].concat(args));
 
     _defineProperty(_assertThisInitialized(_this), "openPopUpModal", function (e) {
-      e.preventDefault();
-      console.log(e);
+      var target = e.target;
+      var articleRow = target.closest('.admin-article-row');
+
+      if (!articleRow) {
+        return;
+      }
+
+      var articleTitle = articleRow.querySelector('.admin-article-title');
+      var articleContent = articleRow.querySelector('.admin-article-content');
+      var modelPopUpTitle = document.querySelector('#pop-up-modal-title');
+      var modelPopUpContent = document.querySelector('#pop-up-modal-content');
+
+      switch (true) {
+        case !articleTitle:
+        case !articleContent:
+        case !modelPopUpTitle:
+        case !modelPopUpContent:
+          return;
+
+        default:
+          break;
+      }
+
+      modelPopUpTitle.innerHTML = articleTitle.getAttribute('data-title');
+      modelPopUpContent.innerHTML = articleContent.getAttribute('data-content');
     });
 
     return _this;

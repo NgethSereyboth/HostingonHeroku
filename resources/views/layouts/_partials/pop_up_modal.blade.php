@@ -14,9 +14,9 @@
         
         <h5 
           class="modal-title" 
-          id="pop-up-modal-label"
+          id="pop-up-modal-title"
         >
-          {{ $modalTitle }}
+          {{-- title --}}
         </h5>
         
         <button 
@@ -30,8 +30,11 @@
       
       </div>
       
-      <div class="modal-body">
-        {{ $modalContent }}
+      <div 
+        id="pop-up-modal-content"
+        class="modal-body"
+      >
+        {{-- Content --}}
       </div>
 
       <div class="modal-footer">

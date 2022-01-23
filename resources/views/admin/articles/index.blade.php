@@ -14,12 +14,31 @@
     </thead>
     <tbody>
       
+      @include(
+        'layouts._partials.pop_up_modal',
+        [ 'saveButtonName' => 'Confirm' ] 
+      )
+
       @foreach ($articles as $article)
 
-        <tr>
+        <tr class="admin-article-row">
+
           <th scope="row">{{ $article->id }}</th>
-          <td>{{ Str::limit($article->title, 20) }}</td>
-          <td>{{ Str::limit($article->content, 20) }}</td>
+          
+          <td 
+            class="admin-article-title"
+            data-title="{{ $article->title }}"
+          >
+            {{ Str::limit($article->title, 20) }}
+          </td>
+
+          <td
+            class="admin-article-content"
+            data-content="{{ $article->content }}"
+          >
+            {{ Str::limit($article->content, 20) }}
+          </td>
+          
           <td>
             <div
               class="image-preview-listing"
@@ -34,6 +53,8 @@
               class="btn btn-success"
               data-controller="admin-article"
               data-action="click->admin-article#openPopUpModal"
+              data-toggle="modal" 
+              data-target="#pop-up-modal"
             >
               Show
             </div>
