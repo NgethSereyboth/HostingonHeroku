@@ -27,6 +27,11 @@ Route::get (
   'HomeController@contact'
   )->name ('home.contact');
 
+Route::get (
+  '/articles/{article}',
+  'HomeController@articleShow'
+)->name ('home.articles.show');
+
 
 // --- Admin ---
 Route::name ('admin.')

@@ -33,8 +33,8 @@ class ArticleRequest extends FormRequest
 
     return [
 
-      'title'     =>  'required|min:10|max:100',
-      'content'   =>  'required|min:10|max:400',
+      'title'     =>  'required|min:10',
+      'content'   =>  'required|min:10',
 
       'image'     =>  'required|'
                       .'mimetypes:text/plain,'
@@ -48,8 +48,8 @@ class ArticleRequest extends FormRequest
 
     return [
       
-      'title'     =>  'required|min:10|max:100',
-      'content'   =>  'required|min:10|max:400',
+      'title'     =>  'required|min:10',
+      'content'   =>  'required|min:10',
 
       'image'     =>  'mimetypes:text/plain,'
                       .'image/png,'

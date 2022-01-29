@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Article;
 
+use Illuminate\Http\Request;
 use Illuminate\View\View;
+
 
 class HomeController extends Controller
 {
@@ -19,11 +21,19 @@ class HomeController extends Controller
    *
    * @return \Illuminate\Contracts\Support\Renderable
    */
-  public function index() : View {
-    return view('home.index');
+  public function index () : View {
+
+    $articles = Article::orderBy('created_at', 'DESC')->get ();
+
+    return view('home.index', compact('articles'));
+
   }
 
-  public function contact() : view {
+  public function articleShow (Article $article) : view {
+    return view('home._index.news.show', compact('article'));
+  }
+
+  public function contact () : view {
     return view('home.contact');
   }
 }
