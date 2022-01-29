@@ -1,7 +1,7 @@
 <div class="ml-5 mr-5 mt-5">
 
-  @isset($article)
-    {!! Form::hidden('id', $article->id) !!}
+  @isset($user)
+    {!! Form::hidden('id', $user->id) !!}
   @endisset
 
   @if (count($errors) > 0)
@@ -16,41 +16,54 @@
   @endif
 
   <div>
-    {!! Form::text('title', 'title') !!}
+    {!! Form::text('name', 'name') !!}
   </div>
 
   <div>
-    {!! Form::text('content', 'content') !!}
+    {!! Form::text('email', 'email')->type('email') !!}
+  </div>
+
+  <div>
+    {!! Form::text('password', 'password')->type('password') !!}
   </div>
 
   <div class="form-group">
-    <label for="image">Upload image for the article</label>
-    <input 
-      id="image" 
-      type="file" 
-      class="form-control-file"
-      name="image"
-      accept="image/png, image/gif, image/jpeg"
-    >
 
-    @isset($article)
-      <img 
-        class="img-fluid mt-5"
-        src="{{ asset('storage/'.$article->image) }}" 
-        alt="{{ $article->title }}"
-      >
-    @endisset
+    <label 
+      for="role"
+    >
+      Roles
+    </label>
+
+    <select 
+      id="role"
+      class="form-control" 
+      name="role_id"
+    >
+      @foreach ($roles as $role)
+        <option
+          value="{{ $role->id }}"
+
+          @if (isset($user) && $user->role_id == $role->id)
+            selected
+          @endif
+
+        >
+          {{ $role->label }}
+        </option>
+      @endforeach
+    </select>
 
   </div>
 
   <div class="d-flex align-items-center justify-content-end">
 
-    <button
-      type="button"
+    <a
       class="btn btn-warning mr-5"
+      href="{{ route('admin.users.index') }}"
     >
       Cancel
-    </button>
+    </a>
 
     <button
       type="submit"

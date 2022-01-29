@@ -6,10 +6,10 @@
     Form::open()
         ->post()
         ->multipart()
-        ->route('admin.articles.store')
+        ->route('admin.users.store')
   !!}
 
-    @include('admin.articles._form')
+    @include('admin.users._form')
 
   {!! Form::close() !!}
 

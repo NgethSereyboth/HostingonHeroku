@@ -45,9 +45,9 @@
 
   <div class="d-flex align-items-center justify-content-end">
 
-    <button
-      type="button"
+    <a
       class="btn btn-warning mr-5"
+      href="{{ route('admin.articles.index') }}"
     >
       Cancel
     </button>

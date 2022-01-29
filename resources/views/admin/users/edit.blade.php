@@ -6,11 +6,11 @@
     Form::open()
         ->patch()
         ->multipart()
-        ->route('admin.articles.update', [$article->id])
-        ->fill($article)
+        ->route('admin.users.update', [$user->id])
+        ->fill($user)
   !!}
 
-    @include('admin.articles._form')
+    @include('admin.users._form')
 
   {!! Form::close() !!}
 

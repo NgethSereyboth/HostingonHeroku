@@ -7,7 +7,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\UserRequest;
 
 use App\Models\User;
+use App\Models\Role;
 
+use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
 
 
@@ -21,7 +23,7 @@ class UserController extends Controller
    */
   public function index() : View{
     
-    $users = User::with('user.role')
+    $users = User::with('role')
         ->orderBy('created_at', 'DESC')
         ->get ();
 
@@ -35,7 +37,10 @@ class UserController extends Controller
    * @return \Illuminate\Http\Response
    */
   public function create() : View {
-    return view('admin.users.create');
+
+    $roles = Role::orderBy('label')->get ();
+
+    return view('admin.users.create', compact('roles'));
   }
 
   /**
@@ -46,7 +51,9 @@ class UserController extends Controller
    */
   public function store(UserRequest $request)
   {
+
     $user = new User ($request->all());
+    $user->password = Hash::make($request->get('password'));
     $user->save ();
 
     return redirect()->route('admin.users.index');
@@ -60,7 +67,10 @@ class UserController extends Controller
    * @return \Illuminate\Http\Response
    */
   public function edit(User $user) : View {
-    return view('admin.users.edit', compact('user'));
+
+    $roles = Role::orderBy('label')->get ();
+
+    return view('admin.users.edit', compact('user', 'roles'));
   }
 
   /**
@@ -70,9 +80,15 @@ class UserController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function update(UserRequest $request)
+  public function update(
+    User $user,
+    UserRequest $request
+  )
   {
-    $user = new User ($request->all());
+
+    $input = $request->all();
+    $user->fill($input)->save();
+    $user->password = Hash::make($request->get('password'));
     $user->save ();
 
     return redirect()->route('admin.users.index');

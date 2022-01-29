@@ -46,7 +46,7 @@ Route::name ('admin.')
       
       Route::resource ('/articles', 'ArticleController');
 
-      Route::resource ('/users', 'UserController');
+      Route::resource ('/users', 'UserController')->except('show');
       
     }
   );

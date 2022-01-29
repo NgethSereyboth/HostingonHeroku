@@ -33,10 +33,10 @@ class UserRequest extends FormRequest
 
     return [
 
-      'name'     =>  'required|min:10|unique:users, name',
-      'email'    =>  'required|email|unique:users,email',
-
-      'role_id'    =>  'required'
+      'name'     =>  'required|min:1|unique:users',
+      'email'    =>  'required|email|unique:users',
+      'password' =>  'required',
+      'role_id'  =>  'required'
                       
     ];
   }
@@ -46,9 +46,11 @@ class UserRequest extends FormRequest
     return [
       
       'name'     
-        =>  'required|min:10|unique:users, name,'.$this->get('id'),
+        =>  'required|min:1|unique:users,name,'.$this->get('id'),
       'email'    
         =>  'required|email|unique:users,email,'.$this->get('id'),
+
+      'password' =>  'required',
 
       'role_id'    =>  'required'
                       
