@@ -51,9 +51,9 @@
             >
             </div>
           </td>
-          <td>
+          <td class="d-flex align-items-center justify-content-center">
             <div 
-              class="btn btn-success"
+              class="btn btn-success mr-3"
               data-controller="admin-article"
               data-action="click->admin-article#openPopUpModal"
               data-toggle="modal" 
@@ -64,12 +64,26 @@
             
             <a 
               href="{{ route('admin.articles.edit', $article->id) }}" 
-              class="btn btn-primary"
+              class="btn btn-primary mr-3"
             >
               Edit
             </a>
             
-            <div class="btn btn-danger">Delete</div>
+            <form 
+              action="
+                {{ route('admin.articles.destroy', $article->id) }}
+              "
+              method="post"
+            >
+              @csrf
+              <input type="hidden" name="_method" value="DELETE">
+              <button
+                type="submit"                
+                class="btn btn-danger"
+              >
+                Delete
+              </button>
+            </form>
           
           </td>
         </tr>
