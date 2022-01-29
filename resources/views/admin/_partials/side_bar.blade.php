@@ -36,17 +36,24 @@
 
       <li>
 
-        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
+        <a 
+          href="#pageSubmenu" 
+          data-toggle="collapse" 
+          aria-expanded="false" 
+          class="dropdown-toggle"
+        >
+          Resource Management
+        </a>
         
         <ul class="collapse list-unstyled" id="pageSubmenu">
           <li>
-              <a href="#">Page 1</a>
+              <a href="{{ route('admin.users.index') }}">Users</a>
           </li>
           <li>
-              <a href="#">Page 2</a>
+              <a href="#">Budgets</a>
           </li>
           <li>
-              <a href="#">Page 3</a>
+              <a href="#">Materials</a>
           </li>
         </ul>
       

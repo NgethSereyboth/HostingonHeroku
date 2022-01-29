@@ -42,8 +42,8 @@ class User extends Authenticatable
 
   // Relationships
 
-  public function role () : Relations\HasOne {
-    return $this->hasOne (Role::class);
+  public function role () : Relations\BelongsTo {
+    return $this->belongsTo (Role::class);
   }
 
 }

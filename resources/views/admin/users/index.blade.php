@@ -6,9 +6,9 @@
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Title</th>
-        <th scope="col">Content</th>
-        <th scope="col">Image</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Role</th>
         <th scope="col">Actions</th>
       </tr>
     </thead>
@@ -19,43 +19,38 @@
         [ 'needSavedButton' => 'false' ] 
       )
 
-      @foreach ($articles as $article)
+      @foreach ($users as $user)
 
-        <tr class="admin-article-row">
+        <tr class="admin-user-row">
 
-          <th scope="row">{{ $article->id }}</th>
+          <th scope="row">{{ $user->id }}</th>
           
           <td 
-            class="admin-article-title"
-            data-title="{{ $article->title }}"
+            class="admin-user-title"
+            data-title="{{ $user->name }}"
           >
-            {{ Str::limit($article->title, 20) }}
+            {{ Str::limit($user->name, 20) }}
           </td>
 
           <td
-            class="admin-article-content"
-            data-content="{{ $article->content }}"
+            class="admin-user-content"
+            data-content="{{ $user->email }}"
           >
-            {{ Str::limit($article->content, 20) }}
+            {{ Str::limit($user->email, 20) }}
           </td>
           
           <td
-            class="admin-article-image"
-            data-image="{{ asset('storage/'.$article->image) }}"
+            class="admin-user-role"
+            data-content="{{ $user->role->label }}"
           >
-            <div
-              class="image-preview-listing"
-              style="
-                background: url('{{ asset('storage/'.$article->image) }}');
-              "
-            >
-            </div>
+            {{ $user->role->label }}
           </td>
+
           <td class="d-flex align-items-center justify-content-center">
             <div 
               class="btn btn-success mr-3"
-              data-controller="admin-article"
-              data-action="click->admin-article#openPopUpModal"
+              data-controller="admin-user"
+              data-action="click->admin-user#openPopUpModal"
               data-toggle="modal" 
               data-target="#pop-up-modal"
             >
@@ -63,7 +58,7 @@
             </div>
             
             <a 
-              href="{{ route('admin.articles.edit', $article->id) }}" 
+              href="{{ route('admin.users.edit', $user->id) }}" 
               class="btn btn-primary mr-3"
             >
               Edit
@@ -71,7 +66,7 @@
             
             <form 
               action="
-                {{ route('admin.articles.destroy', $article->id) }}
+                {{ route('admin.users.destroy', $user->id) }}
               "
               method="post"
             >
