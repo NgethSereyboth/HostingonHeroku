@@ -12,7 +12,7 @@ use Illuminate\View\View;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 
-class ArticlesController extends Controller
+class ArticleController extends Controller
 {
   /**
    * Display a listing of the resource.
@@ -124,7 +124,7 @@ class ArticlesController extends Controller
    */
   public function destroy(Article $article)
   {
-    
+
     Storage::disk('public')->delete('articles/'.$article->image);
     $article->delete ();
 

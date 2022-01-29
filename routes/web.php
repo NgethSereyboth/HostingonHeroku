@@ -44,7 +44,9 @@ Route::name ('admin.')
       
       Route::get ('/', 'IndexController@index')-> name ('index');
       
-      Route::resource ('/articles', 'ArticlesController');
+      Route::resource ('/articles', 'ArticleController');
+
+      Route::resource ('/users', 'UserController');
       
     }
   );
