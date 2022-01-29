@@ -1,5 +1,17 @@
 @extends('admin.index')
 
+@section('admin.create')
+  <a 
+    id="create-article" 
+    type="button" 
+    class="btn btn-info" 
+    href="{{ route('admin.articles.create') }}"
+  >
+    <i class="fas fa-align-left"></i>
+    <span>Create</span>
+  </a>
+@endsection
+
 @section('admin.content')
 
   <table class="table table-sm mr-5 ml-5">

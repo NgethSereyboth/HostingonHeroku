@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+
+use App\Http\Requests\Admin\UserRequest;
 
 use App\Models\User;
+
+use Illuminate\View\View;
 
 
 class UserController extends Controller
@@ -16,10 +19,11 @@ class UserController extends Controller
    *
    * @return \Illuminate\Http\Response
    */
-  public function index()
-  {
+  public function index() : View{
     
-    $users = User::orderBy('created_at', 'DESC')->get ();
+    $users = User::with('user.role')
+        ->orderBy('created_at', 'DESC')
+        ->get ();
 
     return view ('admin.users.index', compact('users'));
 
@@ -30,9 +34,8 @@ class UserController extends Controller
    *
    * @return \Illuminate\Http\Response
    */
-  public function create()
-  {
-      //
+  public function create() : View {
+    return view('admin.users.create');
   }
 
   /**
@@ -41,21 +44,14 @@ class UserController extends Controller
    * @param  \Illuminate\Http\Request  $request
    * @return \Illuminate\Http\Response
    */
-  public function store(Request $request)
+  public function store(UserRequest $request)
   {
-      //
+    $user = new User ($request->all());
+    $user->save ();
+
+    return redirect()->route('admin.users.index');
   }
 
-  /**
-   * Display the specified resource.
-   *
-   * @param  int  $id
-   * @return \Illuminate\Http\Response
-   */
-  public function show($id)
-  {
-      //
-  }
 
   /**
    * Show the form for editing the specified resource.
@@ -63,9 +59,8 @@ class UserController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function edit($id)
-  {
-      //
+  public function edit(User $user) : View {
+    return view('admin.users.edit', compact('user'));
   }
 
   /**
@@ -75,9 +70,12 @@ class UserController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function update(Request $request, $id)
+  public function update(UserRequest $request)
   {
-      //
+    $user = new User ($request->all());
+    $user->save ();
+
+    return redirect()->route('admin.users.index');
   }
 
   /**
@@ -86,9 +84,10 @@ class UserController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function destroy($id)
+  public function destroy(User $user)
   {
-      //
+    $user->delete ();
+    return redirect()->route('admin.users.index');
   }
   
 }

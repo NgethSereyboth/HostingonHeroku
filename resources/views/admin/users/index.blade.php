@@ -1,5 +1,17 @@
 @extends('admin.index')
 
+@section('admin.create')
+  <a 
+    id="create-article" 
+    type="button" 
+    class="btn btn-info" 
+    href="{{ route('admin.users.create') }}"
+  >
+    <i class="fas fa-align-left"></i>
+    <span>Create</span>
+  </a>
+@endsection
+
 @section('admin.content')
 
   <table class="table table-sm mr-5 ml-5">
@@ -47,15 +59,6 @@
           </td>
 
           <td class="d-flex align-items-center justify-content-center">
-            <div 
-              class="btn btn-success mr-3"
-              data-controller="admin-user"
-              data-action="click->admin-user#openPopUpModal"
-              data-toggle="modal" 
-              data-target="#pop-up-modal"
-            >
-              Show
-            </div>
             
             <a 
               href="{{ route('admin.users.edit', $user->id) }}" 
