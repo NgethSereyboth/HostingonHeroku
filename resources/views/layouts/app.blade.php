@@ -138,6 +138,18 @@
 
                   <div 
                     class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+                    @if (
+                      auth ()->user ()->role->label === "admin" ||
+                      auth ()->user ()->role->label === "developer" 
+                    )
+                      <a 
+                        class="dropdown-item"
+                        href="{{ route ('admin.index') }}"
+                      >
+                        Admin site
+                      </a>
+                    @endif
                     
                     <form 
                       class="dropdown-item"
@@ -158,13 +170,6 @@
                     
                     </form>
 
-                    <a 
-                      class="dropdown-item"
-                      href="{{ route ('admin.index') }}"
-                    >
-                      Admin site
-                    </a>
-                  
                   </div>
 
                 </div>

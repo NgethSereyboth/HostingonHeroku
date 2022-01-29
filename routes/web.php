@@ -35,7 +35,7 @@ Route::get (
 
 // --- Admin ---
 Route::name ('admin.')
-  ->middleware ('auth')
+  ->middleware (['auth', 'checkPrivilege'])
   ->namespace ('Admin')
   ->prefix ('adminz')
   ->group (
