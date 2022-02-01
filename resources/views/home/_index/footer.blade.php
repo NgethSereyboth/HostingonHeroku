@@ -20,7 +20,7 @@
     <div>
 
         <a href="" class="text-white me-4">
-            <i class="fab fa-facebook-square"></i>
+            <i class="fab fa-facebook-f"></i>
         </a>
         <a href="" class="text-white me-4">
             <i class="fab fa-twitter"></i>
@@ -37,7 +37,7 @@
         <a href="" class="text-white me-4">
             <i class="fab fa-github"></i>
         </a>
-        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
 
     </div>
     <!-- Right -->
