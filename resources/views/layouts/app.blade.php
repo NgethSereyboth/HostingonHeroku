@@ -198,9 +198,10 @@
 
             <div class="site-heading">
 
-              <h1>KhmerTechInsider</h1>
 
-              <span class="subheading">Tech Sharing</span>
+              <h1 style= "color:azure;">KhmerTechTalks</h1>
+
+              <span class="subheading">Technology sharing</span>
 
             </div>
 
